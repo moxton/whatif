@@ -1,5 +1,6 @@
 import { getHomepageCompanies, getTopPerformers, makeSlug } from './lib/data';
 import HomepageHero from './components/HomepageHero';
+import Sparkline from './components/Sparkline';
 
 export default function Home() {
   const featured = getHomepageCompanies();
@@ -42,7 +43,7 @@ export default function Home() {
                 href={`/what-if-you-invested-in/${slug}/`}
                 className="bg-surface-800 border border-white/5 rounded-2xl p-5 sm:p-6 card-hover block group relative overflow-hidden"
               >
-                <span className="absolute top-3 right-4 font-mono text-4xl font-bold text-white/[0.04]">
+                <span className="absolute top-3 right-4 font-mono text-4xl font-bold text-white/[0.07]">
                   {i + 1}
                 </span>
                 <p className="text-xs text-muted font-display mb-1">
@@ -51,7 +52,13 @@ export default function Home() {
                 <h3 className="font-display font-semibold text-lg text-white group-hover:text-gain transition-colors mb-3">
                   {page.company_name}
                 </h3>
-                <p className="font-mono font-bold text-2xl sm:text-3xl text-gain mb-1">
+                <Sparkline
+                  data={page.yearly_breakdown}
+                  width={100}
+                  height={32}
+                  positive={true}
+                />
+                <p className="font-mono font-bold text-2xl sm:text-3xl text-gain mb-1 mt-2">
                   {formatValue(page.current_value)}
                 </p>
                 <p className="text-xs font-mono text-gain/60">
@@ -137,7 +144,13 @@ export default function Home() {
                     {isPositive ? '+' : ''}{formatReturn(page.total_return_pct)}
                   </span>
                 </div>
-                <div className="flex items-baseline gap-2">
+                <Sparkline
+                  data={page.yearly_breakdown}
+                  width={80}
+                  height={28}
+                  positive={isPositive}
+                />
+                <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-xs text-muted">$1,000 →</span>
                   <span
                     className={`font-mono font-bold text-lg ${
