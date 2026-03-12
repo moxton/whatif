@@ -99,9 +99,10 @@ export default function RootLayout({ children }) {
                 </h4>
                 <div className="flex flex-col gap-1.5 text-sm text-muted-light">
                   <a href="/calculator/" className="hover:text-white transition-colors">Calculator</a>
+                  <a href="/blog/" className="hover:text-white transition-colors">Blog</a>
                   <a href="/methodology/" className="hover:text-white transition-colors">Methodology</a>
                   <a href="/about/" className="hover:text-white transition-colors">About</a>
-                  <a href="/disclaimer/" className="hover:text-white transition-colors">Disclaimer</a>
+                  <a href="/contact/" className="hover:text-white transition-colors">Contact</a>
                 </div>
               </div>
             </div>
