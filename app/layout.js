@@ -1,6 +1,7 @@
 import './globals.css';
 import Script from 'next/script';
 import { Outfit, DM_Sans, JetBrains_Mono } from 'next/font/google';
+import Nav from './components/Nav';
 
 const display = Outfit({
   subsets: ['latin'],
@@ -33,6 +34,9 @@ export const metadata = {
   verification: {
     google: 'DLopYtAcr9PqmNkfX5v4vrx56rezTaoPx8Or4lKSfI0',
   },
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -61,27 +65,7 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className="font-body bg-surface-900 text-slate-200 min-h-screen">
-        <nav className="border-b border-white/5 bg-surface-900/80 backdrop-blur-md sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-            <a href="/" className="font-display font-bold text-lg tracking-tight text-white hover:text-gain transition-colors">
-              What If You Invested<span className="text-gain">...</span>
-            </a>
-            <div className="flex items-center gap-6 text-sm text-muted-light">
-              <a href="/calculator/" className="text-gain font-medium hover:text-white transition-colors">
-                Calculator
-              </a>
-              <a href="/methodology/" className="hover:text-white transition-colors hidden sm:block">
-                Methodology
-              </a>
-              <a href="/about/" className="hover:text-white transition-colors hidden sm:block">
-                About
-              </a>
-              <a href="/disclaimer/" className="hover:text-white transition-colors">
-                Disclaimer
-              </a>
-            </div>
-          </div>
-        </nav>
+        <Nav />
 
         <main>{children}</main>
 
