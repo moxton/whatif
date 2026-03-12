@@ -23,16 +23,16 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] to-transparent pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 sm:pb-16 relative">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-4">
               What if you invested
               <span className="text-gain">...</span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-light leading-relaxed mb-8 max-w-xl">
+            <p className="text-lg sm:text-xl text-muted-light leading-relaxed mb-8 mx-auto max-w-xl">
               See what any stock investment would be worth today.
               Real data. Interactive charts. No opinions.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm">
+            <div className="flex flex-wrap justify-center gap-3 text-sm">
               <a
                 href="/calculator/"
                 className="px-5 py-2.5 bg-gain text-surface-900 font-display font-semibold rounded-lg hover:bg-gain/90 transition-colors"

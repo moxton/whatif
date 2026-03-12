@@ -17,7 +17,7 @@ export default function Nav() {
     <nav className="border-b border-white/5 bg-surface-900/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <a href="/" className="font-display font-bold text-lg tracking-tight text-white hover:text-gain transition-colors">
-          What If You Invested<span className="text-gain">...</span>
+          What if you invested<span className="text-gain">...</span>
         </a>
         <div className="flex items-center gap-5 text-sm">
           {NAV_LINKS.map(({ href, label, mobile }) => (
