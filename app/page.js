@@ -1,10 +1,9 @@
-import { getHomepageCompanies, getTopPerformers, makeSlug, getSectors } from './lib/data';
+import { getHomepageCompanies, getTopPerformers, makeSlug } from './lib/data';
+import HomepageHero from './components/HomepageHero';
 
 export default function Home() {
   const featured = getHomepageCompanies();
   const topPerformers = getTopPerformers(10);
-  const sectors = getSectors();
-  const sectorNames = Object.keys(sectors).filter((s) => s !== 'Index' && s !== 'Crypto');
 
   function formatValue(val) {
     if (val >= 1000000) return `$${(val / 1000000).toFixed(1)}M`;
@@ -19,62 +18,94 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] to-transparent pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 sm:pb-16 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-4">
-              What if you invested
-              <span className="text-gain">...</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-muted-light leading-relaxed mb-8 mx-auto max-w-xl">
-              See what any stock investment would be worth today.
-              Real data. Interactive charts. No opinions.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 text-sm">
-              <a
-                href="/calculator/"
-                className="px-5 py-2.5 bg-gain text-surface-900 font-display font-semibold rounded-lg hover:bg-gain/90 transition-colors"
-              >
-                Open Calculator
-              </a>
-              <a
-                href="#companies"
-                className="px-5 py-2.5 bg-surface-700 text-white font-display font-medium rounded-lg hover:bg-surface-600 transition-colors border border-white/5"
-              >
-                Browse companies
-              </a>
-            </div>
-          </div>
+      {/* Hero with rotating examples */}
+      <HomepageHero />
 
-          {/* Quick stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12">
-            {[
-              { label: 'Companies tracked', value: '44' },
-              { label: 'Investment scenarios', value: '213' },
-              { label: 'Data source', value: 'Yahoo Finance' },
-              { label: 'Updated', value: 'Monthly' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-surface-800 border border-white/5 rounded-xl px-4 py-3"
+      {/* Top performers - visually dominant section */}
+      <section id="top-performers" className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-12">
+        <div className="mb-6">
+          <h2 className="font-display text-2xl font-bold text-white">
+            Greatest returns of all time
+          </h2>
+          <p className="text-sm text-muted mt-1">
+            $1,000 from the earliest available start year
+          </p>
+        </div>
+
+        {/* Top 3 - big cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+          {topPerformers.slice(0, 3).map((page, i) => {
+            const slug = makeSlug(page.company_name, page.start_year);
+            return (
+              <a
+                key={page.ticker}
+                href={`/what-if-you-invested-in/${slug}/`}
+                className="bg-surface-800 border border-white/5 rounded-2xl p-5 sm:p-6 card-hover block group relative overflow-hidden"
               >
-                <p className="text-xs text-muted mb-0.5">{stat.label}</p>
-                <p className="font-display font-semibold text-white">{stat.value}</p>
-              </div>
-            ))}
-          </div>
+                <span className="absolute top-3 right-4 font-mono text-4xl font-bold text-white/[0.04]">
+                  {i + 1}
+                </span>
+                <p className="text-xs text-muted font-display mb-1">
+                  {page.ticker} · since {page.start_year}
+                </p>
+                <h3 className="font-display font-semibold text-lg text-white group-hover:text-gain transition-colors mb-3">
+                  {page.company_name}
+                </h3>
+                <p className="font-mono font-bold text-2xl sm:text-3xl text-gain mb-1">
+                  {formatValue(page.current_value)}
+                </p>
+                <p className="text-xs font-mono text-gain/60">
+                  +{formatReturn(page.total_return_pct)}
+                </p>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Rest of top 10 - compact list */}
+        <div className="bg-surface-800 border border-white/5 rounded-2xl overflow-hidden">
+          {topPerformers.slice(3).map((page, i) => {
+            const slug = makeSlug(page.company_name, page.start_year);
+            return (
+              <a
+                key={page.ticker}
+                href={`/what-if-you-invested-in/${slug}/`}
+                className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.03] last:border-0 table-row-hover transition-colors group"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-muted w-5 text-right">
+                    {i + 4}
+                  </span>
+                  <div>
+                    <span className="font-display font-medium text-sm text-white group-hover:text-gain transition-colors">
+                      {page.company_name}
+                    </span>
+                    <span className="text-xs text-muted ml-2">
+                      since {page.start_year}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className="font-mono font-bold text-sm text-gain">
+                    {formatValue(page.current_value)}
+                  </span>
+                  <span className="text-xs text-muted ml-2 font-mono hidden sm:inline">
+                    +{formatReturn(page.total_return_pct)}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 
-      {/* Featured companies grid */}
-      <section id="companies" className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      {/* All companies grid */}
+      <section id="companies" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 border-t border-white/5">
         <h2 className="font-display text-2xl font-bold text-white mb-2">
-          Popular companies
+          All companies
         </h2>
         <p className="text-sm text-muted mb-8">
-          Click any company to see the full breakdown with interactive calculator and chart
+          Click any company to see the full breakdown with interactive charts
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -122,103 +153,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Top performers */}
-      <section id="top-performers" className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <h2 className="font-display text-2xl font-bold text-white mb-2">
-          Greatest returns of all time
-        </h2>
-        <p className="text-sm text-muted mb-8">
-          The best-performing investments from their earliest available start year
-        </p>
-
-        <div className="bg-surface-800 border border-white/5 rounded-2xl overflow-hidden">
-          {topPerformers.map((page, i) => {
-            const slug = makeSlug(page.company_name, page.start_year);
-            return (
-              <a
-                key={page.ticker}
-                href={`/what-if-you-invested-in/${slug}/`}
-                className="flex items-center justify-between px-6 py-4 border-b border-white/[0.03] last:border-0 table-row-hover transition-colors group"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-mono text-muted w-6 text-right">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <span className="font-display font-medium text-white group-hover:text-gain transition-colors">
-                      {page.company_name}
-                    </span>
-                    <span className="text-xs text-muted ml-2">
-                      since {page.start_year}
-                    </span>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className="font-mono font-bold text-gain">
-                    {formatValue(page.current_value)}
-                  </span>
-                  <span className="text-xs text-muted ml-2 font-mono hidden sm:inline">
-                    +{formatReturn(page.total_return_pct)}
-                  </span>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Browse by sector */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <h2 className="font-display text-2xl font-bold text-white mb-6">
-          Browse by sector
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {sectorNames.map((sector) => (
-            <div
-              key={sector}
-              className="bg-surface-800 border border-white/5 rounded-xl p-5"
-            >
-              <h3 className="font-display font-semibold text-white mb-1">
-                {sector}
-              </h3>
-              <p className="text-xs text-muted mb-3">
-                {sectors[sector].length} companies
-              </p>
-              <div className="flex flex-col gap-1">
-                {sectors[sector].slice(0, 3).map((company) => (
-                  <a
-                    key={company.ticker}
-                    href={`/what-if-you-invested-in/${makeSlug(company.name, company.start_years[0])}/`}
-                    className="text-sm text-muted-light hover:text-white transition-colors"
-                  >
-                    {company.name}
-                  </a>
-                ))}
-                {sectors[sector].length > 3 && (
-                  <span className="text-xs text-muted">
-                    +{sectors[sector].length - 3} more
-                  </span>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Bottom CTA */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 mb-8">
-        <div className="bg-surface-800 border border-white/5 rounded-2xl p-8 sm:p-12 text-center gradient-border">
+        <div className="text-center">
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-3">
-            Every investment has a story
+            Pick any company. Any year. Any amount.
           </h2>
-          <p className="text-muted-light max-w-lg mx-auto mb-1">
-            We track {featured.length}+ companies across every major sector.
-            Pick any company and any start year to see what your investment
-            would be worth today.
+          <p className="text-muted-light max-w-lg mx-auto mb-6">
+            The interactive calculator lets you customize everything.
           </p>
-          <p className="text-xs text-muted mt-4">
-            Not financial advice. Past performance does not guarantee future
-            results.
+          <a
+            href="/calculator/"
+            className="inline-block px-6 py-3 bg-gain text-surface-900 font-display font-semibold rounded-lg hover:bg-gain/90 transition-colors text-base"
+          >
+            Open Calculator
+          </a>
+          <p className="text-xs text-muted mt-6">
+            Not financial advice. Past performance does not guarantee future results.
           </p>
         </div>
       </section>

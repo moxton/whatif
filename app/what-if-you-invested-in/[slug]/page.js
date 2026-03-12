@@ -3,7 +3,6 @@ import Calculator from '../../components/Calculator';
 import GrowthChart from '../../components/GrowthChart';
 import YearlyTable from '../../components/YearlyTable';
 import RelatedLinks from '../../components/RelatedLinks';
-import AffiliateCTA from '../../components/AffiliateCTA';
 import FAQSchema from '../../components/FAQSchema';
 
 export function generateStaticParams() {
@@ -92,17 +91,19 @@ export default function CompanyPage({ params }) {
               Open in Calculator
             </a>
           </div>
+        </div>
 
+        {/* Charts and data - visual break from hero section */}
+        <div className="space-y-6 mt-10">
           {/* Growth chart */}
           <GrowthChart pageData={pageData} />
 
           {/* Year-by-year table */}
           <YearlyTable pageData={pageData} />
+        </div>
 
-          {/* Affiliate CTA */}
-          <AffiliateCTA />
-
-          {/* Related links */}
+        {/* Explore more */}
+        <div className="mt-10">
           <RelatedLinks
             currentPage={pageData}
             companyPages={companyPages}
@@ -111,7 +112,7 @@ export default function CompanyPage({ params }) {
         </div>
 
         {/* Page disclaimer */}
-        <div className="mt-8 px-4 py-3 rounded-lg bg-surface-800 border border-white/5">
+        <div className="mt-10 px-4 py-3 rounded-lg bg-surface-800 border border-white/5">
           <p className="text-[11px] text-muted leading-relaxed">
             For informational and educational purposes only. Not financial advice.
             Past performance does not guarantee future results. All calculations

@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
               <div>
                 <h4 className="font-display font-semibold text-white mb-3">
-                  What If You Invested
+                  What if you invested<span className="text-gain">...</span>
                 </h4>
                 <p className="text-sm text-muted leading-relaxed">
                   Historical stock return calculator. See what any investment would

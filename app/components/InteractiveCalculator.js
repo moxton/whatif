@@ -202,26 +202,36 @@ function DatePicker({ firstMonth, lastMonth, selectedMonth, selectedYear, onMont
         Start date
       </label>
       <div className="grid grid-cols-2 gap-2">
-        <select
-          value={selectedMonth}
-          onChange={(e) => onMonthChange(Number(e.target.value))}
-          className="bg-surface-700 border border-white/10 rounded-lg px-3 py-3 text-white font-body focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors appearance-none"
-        >
-          {monthOptions.map((m) => (
-            <option key={m.value} value={m.value} disabled={m.disabled}>
-              {m.name}
-            </option>
-          ))}
-        </select>
-        <select
-          value={selectedYear}
-          onChange={(e) => onYearChange(Number(e.target.value))}
-          className="bg-surface-700 border border-white/10 rounded-lg px-3 py-3 text-white font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors appearance-none"
-        >
-          {years.map((y) => (
-            <option key={y} value={y}>{y}</option>
-          ))}
-        </select>
+        <div className="relative">
+          <select
+            value={selectedMonth}
+            onChange={(e) => onMonthChange(Number(e.target.value))}
+            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-3 pr-8 text-white font-body focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors appearance-none"
+          >
+            {monthOptions.map((m) => (
+              <option key={m.value} value={m.value} disabled={m.disabled}>
+                {m.name}
+              </option>
+            ))}
+          </select>
+          <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div className="relative">
+          <select
+            value={selectedYear}
+            onChange={(e) => onYearChange(Number(e.target.value))}
+            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-3 pr-8 text-white font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors appearance-none"
+          >
+            {years.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+          <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </div>
     </div>
   );

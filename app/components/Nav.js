@@ -1,15 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const NAV_LINKS = [
-  { href: '/methodology/', label: 'Methodology', mobile: false },
-  { href: '/about/', label: 'About', mobile: false },
-  { href: '/disclaimer/', label: 'Disclaimer', mobile: true },
+  { href: '/methodology/', label: 'Methodology' },
+  { href: '/about/', label: 'About' },
+  { href: '/disclaimer/', label: 'Disclaimer' },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (href) => pathname === href || pathname === href.replace(/\/$/, '');
 
@@ -19,12 +21,14 @@ export default function Nav() {
         <a href="/" className="font-display font-bold text-lg tracking-tight text-white hover:text-gain transition-colors">
           What if you invested<span className="text-gain">...</span>
         </a>
-        <div className="flex items-center gap-5 text-sm">
-          {NAV_LINKS.map(({ href, label, mobile }) => (
+
+        {/* Desktop nav */}
+        <div className="hidden sm:flex items-center gap-5 text-sm">
+          {NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className={`transition-colors ${mobile ? '' : 'hidden sm:block'} ${
+              className={`transition-colors ${
                 isActive(href)
                   ? 'text-gain font-medium'
                   : 'text-muted-light hover:text-white'
@@ -44,7 +48,56 @@ export default function Nav() {
             Calculator
           </a>
         </div>
+
+        {/* Mobile nav: calculator button + hamburger */}
+        <div className="flex sm:hidden items-center gap-3">
+          <a
+            href="/calculator/"
+            className={`font-display font-semibold text-sm px-3 py-1.5 rounded-lg transition-colors ${
+              isActive('/calculator/')
+                ? 'bg-gain text-surface-900'
+                : 'bg-gain/10 text-gain hover:bg-gain/20'
+            }`}
+          >
+            Calculator
+          </a>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-1.5 text-muted-light hover:text-white transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile dropdown */}
+      {mobileOpen && (
+        <div className="sm:hidden border-t border-white/5 bg-surface-900/95 backdrop-blur-md px-4 py-3 space-y-1">
+          {NAV_LINKS.map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              onClick={() => setMobileOpen(false)}
+              className={`block px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                isActive(href)
+                  ? 'text-gain font-medium bg-gain/5'
+                  : 'text-muted-light hover:text-white hover:bg-surface-700'
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
