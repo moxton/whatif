@@ -6,16 +6,16 @@ export const metadata = {
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-      <p className="font-display text-sm font-semibold text-accent uppercase tracking-widest mb-3">
+      <h1 className="font-display text-3xl sm:text-4xl font-bold text-gain mb-2">
         About
-      </p>
-      <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mb-8 leading-tight">
-        Free historical stock return calculator.
       </h1>
+      <p className="text-base text-muted-light mb-8">
+        Free historical stock return calculator.
+      </p>
 
       <div className="space-y-6">
         <div className="bg-surface-800 border border-white/5 rounded-2xl p-6 sm:p-8">
-          <p className="font-display text-2xl sm:text-3xl font-bold text-white leading-snug mb-4">
+          <p className="font-display text-xl sm:text-2xl font-bold text-white leading-snug mb-4">
             What would your investment be worth today?
           </p>
           <p className="text-sm sm:text-base text-muted-light leading-relaxed">

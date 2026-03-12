@@ -6,10 +6,10 @@ export const metadata = {
 export default function Methodology() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-      <h1 className="font-display text-3xl font-bold text-white mb-2">
+      <h1 className="font-display text-3xl sm:text-4xl font-bold text-gain mb-2">
         Methodology
       </h1>
-      <p className="text-sm text-muted mb-8">
+      <p className="text-base text-muted-light mb-8">
         How we calculate historical investment returns.
       </p>
 
