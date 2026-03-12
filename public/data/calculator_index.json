@@ -1,0 +1,310 @@
+[
+  {
+    "ticker": "AAPL",
+    "name": "Apple",
+    "sector": "Technology",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft",
+    "sector": "Technology",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "AMZN",
+    "name": "Amazon",
+    "sector": "Technology",
+    "first_month": "1997-05",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "GOOGL",
+    "name": "Alphabet (Google)",
+    "sector": "Technology",
+    "first_month": "2004-08",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "META",
+    "name": "Meta (Facebook)",
+    "sector": "Technology",
+    "first_month": "2012-05",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "NVDA",
+    "name": "Nvidia",
+    "sector": "Technology",
+    "first_month": "1999-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla",
+    "sector": "Technology",
+    "first_month": "2010-06",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "NFLX",
+    "name": "Netflix",
+    "sector": "Technology",
+    "first_month": "2002-05",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "BRK-B",
+    "name": "Berkshire Hathaway",
+    "sector": "Financial",
+    "first_month": "1996-05",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "JNJ",
+    "name": "Johnson & Johnson",
+    "sector": "Healthcare",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "PG",
+    "name": "Procter & Gamble",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "KO",
+    "name": "Coca-Cola",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "WMT",
+    "name": "Walmart",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "JPM",
+    "name": "JPMorgan Chase",
+    "sector": "Financial",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "DIS",
+    "name": "Disney",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "MCD",
+    "name": "McDonald's",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "NKE",
+    "name": "Nike",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "HD",
+    "name": "Home Depot",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "V",
+    "name": "Visa",
+    "sector": "Financial",
+    "first_month": "2008-03",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "MA",
+    "name": "Mastercard",
+    "sector": "Financial",
+    "first_month": "2006-05",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "SHOP",
+    "name": "Shopify",
+    "sector": "Technology",
+    "first_month": "2015-05",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "ZM",
+    "name": "Zoom",
+    "sector": "Technology",
+    "first_month": "2019-04",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "ROKU",
+    "name": "Roku",
+    "sector": "Technology",
+    "first_month": "2017-09",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "CRWD",
+    "name": "CrowdStrike",
+    "sector": "Technology",
+    "first_month": "2019-06",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "PLTR",
+    "name": "Palantir",
+    "sector": "Technology",
+    "first_month": "2020-09",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "SNOW",
+    "name": "Snowflake",
+    "sector": "Technology",
+    "first_month": "2020-09",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "MELI",
+    "name": "MercadoLibre",
+    "sector": "Technology",
+    "first_month": "2007-08",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "SE",
+    "name": "Sea Limited",
+    "sector": "Technology",
+    "first_month": "2017-10",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "ABNB",
+    "name": "Airbnb",
+    "sector": "Consumer",
+    "first_month": "2020-12",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "DASH",
+    "name": "DoorDash",
+    "sector": "Technology",
+    "first_month": "2020-12",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "COIN",
+    "name": "Coinbase",
+    "sector": "Financial",
+    "first_month": "2021-04",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "RIVN",
+    "name": "Rivian",
+    "sector": "Industrial",
+    "first_month": "2021-11",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "RBLX",
+    "name": "Roblox",
+    "sector": "Technology",
+    "first_month": "2021-03",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "MNST",
+    "name": "Monster Beverage",
+    "sector": "Consumer",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "DPZ",
+    "name": "Domino's Pizza",
+    "sector": "Consumer",
+    "first_month": "2004-07",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "AMD",
+    "name": "AMD",
+    "sector": "Technology",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "LULU",
+    "name": "Lululemon",
+    "sector": "Consumer",
+    "first_month": "2007-07",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "CMG",
+    "name": "Chipotle",
+    "sector": "Consumer",
+    "first_month": "2006-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "SPY",
+    "name": "S&P 500 (SPY)",
+    "sector": "Index",
+    "first_month": "1993-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "QQQ",
+    "name": "Nasdaq 100 (QQQ)",
+    "sector": "Index",
+    "first_month": "1999-03",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "DIA",
+    "name": "Dow Jones (DIA)",
+    "sector": "Index",
+    "first_month": "1998-01",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "VTI",
+    "name": "Total Market (VTI)",
+    "sector": "Index",
+    "first_month": "2001-06",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "BTC-USD",
+    "name": "Bitcoin",
+    "sector": "Crypto",
+    "first_month": "2014-09",
+    "last_month": "2026-03"
+  },
+  {
+    "ticker": "ETH-USD",
+    "name": "Ethereum",
+    "sector": "Crypto",
+    "first_month": "2017-11",
+    "last_month": "2026-03"
+  }
+]

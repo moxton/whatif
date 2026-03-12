@@ -1,0 +1,581 @@
+{
+  "Technology": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "sector": "Technology",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "sector": "Technology",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "sector": "Technology",
+      "page_count": 7,
+      "start_years": [
+        1997,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet (Google)",
+      "sector": "Technology",
+      "page_count": 6,
+      "start_years": [
+        2004,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "META",
+      "name": "Meta (Facebook)",
+      "sector": "Technology",
+      "page_count": 4,
+      "start_years": [
+        2012,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "sector": "Technology",
+      "page_count": 7,
+      "start_years": [
+        1999,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "sector": "Technology",
+      "page_count": 4,
+      "start_years": [
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "NFLX",
+      "name": "Netflix",
+      "sector": "Technology",
+      "page_count": 6,
+      "start_years": [
+        2002,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify",
+      "sector": "Technology",
+      "page_count": 3,
+      "start_years": [
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "ZM",
+      "name": "Zoom",
+      "sector": "Technology",
+      "page_count": 3,
+      "start_years": [
+        2019,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "ROKU",
+      "name": "Roku",
+      "sector": "Technology",
+      "page_count": 3,
+      "start_years": [
+        2017,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike",
+      "sector": "Technology",
+      "page_count": 3,
+      "start_years": [
+        2019,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "sector": "Technology",
+      "page_count": 2,
+      "start_years": [
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake",
+      "sector": "Technology",
+      "page_count": 2,
+      "start_years": [
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "MELI",
+      "name": "MercadoLibre",
+      "sector": "Technology",
+      "page_count": 5,
+      "start_years": [
+        2007,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "SE",
+      "name": "Sea Limited",
+      "sector": "Technology",
+      "page_count": 3,
+      "start_years": [
+        2017,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "DASH",
+      "name": "DoorDash",
+      "sector": "Technology",
+      "page_count": 2,
+      "start_years": [
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "RBLX",
+      "name": "Roblox",
+      "sector": "Technology",
+      "page_count": 2,
+      "start_years": [
+        2021,
+        2023
+      ]
+    },
+    {
+      "ticker": "AMD",
+      "name": "AMD",
+      "sector": "Technology",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    }
+  ],
+  "Financial": [
+    {
+      "ticker": "BRK-B",
+      "name": "Berkshire Hathaway",
+      "sector": "Financial",
+      "page_count": 7,
+      "start_years": [
+        1996,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "sector": "Financial",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "V",
+      "name": "Visa",
+      "sector": "Financial",
+      "page_count": 5,
+      "start_years": [
+        2008,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard",
+      "sector": "Financial",
+      "page_count": 5,
+      "start_years": [
+        2006,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "COIN",
+      "name": "Coinbase",
+      "sector": "Financial",
+      "page_count": 2,
+      "start_years": [
+        2021,
+        2023
+      ]
+    }
+  ],
+  "Healthcare": [
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Healthcare",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    }
+  ],
+  "Consumer": [
+    {
+      "ticker": "PG",
+      "name": "Procter & Gamble",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "KO",
+      "name": "Coca-Cola",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "WMT",
+      "name": "Walmart",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "DIS",
+      "name": "Disney",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "MCD",
+      "name": "McDonald's",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "NKE",
+      "name": "Nike",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "HD",
+      "name": "Home Depot",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "ABNB",
+      "name": "Airbnb",
+      "sector": "Consumer",
+      "page_count": 2,
+      "start_years": [
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "MNST",
+      "name": "Monster Beverage",
+      "sector": "Consumer",
+      "page_count": 7,
+      "start_years": [
+        1995,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "DPZ",
+      "name": "Domino's Pizza",
+      "sector": "Consumer",
+      "page_count": 6,
+      "start_years": [
+        2004,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "LULU",
+      "name": "Lululemon",
+      "sector": "Consumer",
+      "page_count": 5,
+      "start_years": [
+        2007,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "CMG",
+      "name": "Chipotle",
+      "sector": "Consumer",
+      "page_count": 5,
+      "start_years": [
+        2006,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    }
+  ],
+  "Industrial": [
+    {
+      "ticker": "RIVN",
+      "name": "Rivian",
+      "sector": "Industrial",
+      "page_count": 2,
+      "start_years": [
+        2021,
+        2023
+      ]
+    }
+  ],
+  "Index": [
+    {
+      "ticker": "SPY",
+      "name": "S&P 500 (SPY)",
+      "sector": "Index",
+      "page_count": 6,
+      "start_years": [
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "QQQ",
+      "name": "Nasdaq 100 (QQQ)",
+      "sector": "Index",
+      "page_count": 7,
+      "start_years": [
+        1999,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "DIA",
+      "name": "Dow Jones (DIA)",
+      "sector": "Index",
+      "page_count": 7,
+      "start_years": [
+        1998,
+        2000,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "VTI",
+      "name": "Total Market (VTI)",
+      "sector": "Index",
+      "page_count": 6,
+      "start_years": [
+        2001,
+        2005,
+        2010,
+        2015,
+        2020,
+        2023
+      ]
+    }
+  ],
+  "Crypto": [
+    {
+      "ticker": "BTC-USD",
+      "name": "Bitcoin",
+      "sector": "Crypto",
+      "page_count": 4,
+      "start_years": [
+        2014,
+        2015,
+        2020,
+        2023
+      ]
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "Ethereum",
+      "sector": "Crypto",
+      "page_count": 3,
+      "start_years": [
+        2017,
+        2020,
+        2023
+      ]
+    }
+  ]
+}
