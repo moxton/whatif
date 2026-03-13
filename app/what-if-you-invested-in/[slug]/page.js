@@ -36,7 +36,7 @@ export default function CompanyPage({ params }) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
         <h1 className="font-display text-2xl text-white mb-4">Page not found</h1>
-        <a href="/" className="text-accent hover:underline">
+        <a href="/" className="text-gain hover:underline">
           Back to homepage
         </a>
       </div>
@@ -86,7 +86,7 @@ export default function CompanyPage({ params }) {
             </div>
             <a
               href={`/calculator/?t=${pageData.ticker}&m=${pageData.start_year}-01&a=1000`}
-              className="shrink-0 px-5 py-2 rounded-lg bg-accent text-white font-display font-semibold text-sm hover:bg-accent/90 transition-colors"
+              className="shrink-0 px-5 py-2 rounded-lg bg-gain text-surface-900 font-display font-semibold text-sm hover:bg-gain/90 transition-colors"
             >
               Open in Calculator
             </a>
@@ -118,11 +118,11 @@ export default function CompanyPage({ params }) {
             Past performance does not guarantee future results. All calculations
             are based on split-adjusted closing prices from Yahoo Finance and do
             not account for dividends, taxes, or trading fees. See our{' '}
-            <a href="/methodology/" className="text-accent hover:underline">
+            <a href="/methodology/" className="text-gain hover:underline">
               methodology
             </a>{' '}
             and{' '}
-            <a href="/disclaimer/" className="text-accent hover:underline">
+            <a href="/disclaimer/" className="text-gain hover:underline">
               full disclaimer
             </a>
             .

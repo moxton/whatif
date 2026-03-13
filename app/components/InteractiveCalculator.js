@@ -148,7 +148,7 @@ function CompanySearch({ companies, selected, onSelect }) {
           }
         }}
         placeholder="Search Apple, TSLA, Bitcoin..."
-        className="w-full bg-surface-700 border border-white/10 rounded-lg px-4 py-3 text-white font-body placeholder:text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors"
+        className="w-full bg-surface-700 border border-white/10 rounded-lg px-4 py-3 text-white font-body placeholder:text-muted focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors"
       />
       {open && filtered.length > 0 && (
         <div className="absolute z-50 w-full mt-1 bg-surface-800 border border-white/10 rounded-lg shadow-xl max-h-64 overflow-y-auto">
@@ -206,7 +206,7 @@ function DatePicker({ firstMonth, lastMonth, selectedMonth, selectedYear, onMont
           <select
             value={selectedMonth}
             onChange={(e) => onMonthChange(Number(e.target.value))}
-            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-3 pr-8 text-white font-body focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors appearance-none"
+            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-3 pr-8 text-white font-body focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors appearance-none"
           >
             {monthOptions.map((m) => (
               <option key={m.value} value={m.value} disabled={m.disabled}>
@@ -222,7 +222,7 @@ function DatePicker({ firstMonth, lastMonth, selectedMonth, selectedYear, onMont
           <select
             value={selectedYear}
             onChange={(e) => onYearChange(Number(e.target.value))}
-            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-3 pr-8 text-white font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors appearance-none"
+            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-3 pr-8 text-white font-mono focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors appearance-none"
           >
             {years.map((y) => (
               <option key={y} value={y}>{y}</option>
@@ -458,7 +458,7 @@ export default function InteractiveCalculator({ companies }) {
                     onClick={() => setInvestment(amount)}
                     className={`px-3 py-1.5 rounded-lg text-sm font-mono transition-all ${
                       investment === amount
-                        ? 'bg-accent text-white'
+                        ? 'bg-gain text-surface-900'
                         : 'bg-surface-700 text-muted-light hover:bg-surface-600 hover:text-white'
                     }`}
                   >
@@ -472,7 +472,7 @@ export default function InteractiveCalculator({ companies }) {
                   type="number"
                   value={investment}
                   onChange={(e) => setInvestment(Math.max(1, Number(e.target.value) || 0))}
-                  className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-2.5 pl-7 text-white font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors"
+                  className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-2.5 pl-7 text-white font-mono focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors"
                   min="1"
                   step="100"
                 />
@@ -485,7 +485,7 @@ export default function InteractiveCalculator({ companies }) {
         {loading && (
           <div className="px-6 pb-6">
             <div className="flex items-center gap-3 text-muted-light">
-              <div className="w-4 h-4 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-gain border-t-transparent rounded-full animate-spin" />
               <span className="text-sm">Loading price data...</span>
             </div>
           </div>
@@ -572,11 +572,11 @@ export default function InteractiveCalculator({ companies }) {
               Past performance does not guarantee future results. All calculations
               are based on split-adjusted closing prices from Yahoo Finance and do
               not account for dividends, taxes, or trading fees. See our{' '}
-              <a href="/methodology/" className="text-accent hover:underline">
+              <a href="/methodology/" className="text-gain hover:underline">
                 methodology
               </a>{' '}
               and{' '}
-              <a href="/disclaimer/" className="text-accent hover:underline">
+              <a href="/disclaimer/" className="text-gain hover:underline">
                 full disclaimer
               </a>
               .

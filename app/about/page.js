@@ -67,7 +67,7 @@ export default function About() {
           </p>
           <p className="text-sm text-muted-light leading-relaxed mt-3">
             See the full details on our{' '}
-            <a href="/methodology/" className="text-accent hover:underline">
+            <a href="/methodology/" className="text-gain hover:underline">
               methodology page
             </a>.
           </p>
@@ -92,7 +92,7 @@ export default function About() {
           </p>
           <a
             href="/calculator/"
-            className="inline-block px-6 py-2.5 rounded-lg bg-accent text-white font-display font-semibold text-sm hover:bg-accent/90 transition-colors"
+            className="inline-block px-6 py-2.5 rounded-lg bg-gain text-surface-900 font-display font-semibold text-sm hover:bg-gain/90 transition-colors"
           >
             Try the Calculator
           </a>

@@ -98,7 +98,7 @@ export default function Disclaimer() {
             trading fees, or inflation adjustments. Actual investment
             returns may differ significantly from the figures shown.
             See our{' '}
-            <a href="/methodology/" className="text-accent hover:underline">
+            <a href="/methodology/" className="text-gain hover:underline">
               methodology page
             </a>{' '}
             for complete details on how returns are calculated.

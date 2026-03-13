@@ -88,7 +88,7 @@ export default function Calculator({ pageData }) {
               onClick={() => setInvestment(amount)}
               className={`px-3 py-1.5 rounded-lg text-sm font-mono transition-all ${
                 investment === amount
-                  ? 'bg-accent text-white'
+                  ? 'bg-gain text-surface-900'
                   : 'bg-surface-700 text-muted-light hover:bg-surface-600 hover:text-white'
               }`}
             >
@@ -102,7 +102,7 @@ export default function Calculator({ pageData }) {
             type="number"
             value={investment}
             onChange={(e) => setInvestment(Math.max(1, Number(e.target.value) || 0))}
-            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-2.5 pl-7 text-white font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors"
+            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-2.5 pl-7 text-white font-mono focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors"
             min="1"
             step="100"
           />

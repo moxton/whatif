@@ -112,7 +112,7 @@ function BestPerformingStocks() {
       </p>
       <p>
         Want to run your own numbers?{' '}
-        <a href="/calculator/" className="text-accent hover:underline">
+        <a href="/calculator/" className="text-gain hover:underline">
           Try the calculator
         </a>{' '}
         with any company, any start date, any amount.
@@ -187,7 +187,7 @@ function HowToCalculateReturns() {
       <h2>Try it yourself</h2>
       <p>
         Our{' '}
-        <a href="/calculator/" className="text-accent hover:underline">
+        <a href="/calculator/" className="text-gain hover:underline">
           investment calculator
         </a>{' '}
         computes both total return and CAGR for any company in our database, any
@@ -281,7 +281,7 @@ function SP500Post() {
       <h2>Run your own numbers</h2>
       <p>
         Use the{' '}
-        <a href="/calculator/" className="text-accent hover:underline">
+        <a href="/calculator/" className="text-gain hover:underline">
           calculator
         </a>{' '}
         to pick any start month going back to 1993. You can also compare the
@@ -309,7 +309,7 @@ export default function BlogPost({ params }) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-20 text-center">
         <h1 className="font-display text-2xl text-white mb-4">Post not found</h1>
-        <a href="/blog/" className="text-accent hover:underline">
+        <a href="/blog/" className="text-gain hover:underline">
           Back to blog
         </a>
       </div>
@@ -350,7 +350,7 @@ export default function BlogPost({ params }) {
       <div className="mt-12 pt-8 border-t border-white/5">
         <a
           href="/blog/"
-          className="text-sm text-accent hover:underline font-display font-medium"
+          className="text-sm text-gain hover:underline font-display font-medium"
         >
           ← Back to blog
         </a>
