@@ -41,6 +41,18 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'What If You Invested',
+    images: [
+      {
+        url: 'https://whatifyouinvested.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'What If You Invested - Historical Stock Return Calculator',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://whatifyouinvested.com/og-image.png'],
   },
 };
 
