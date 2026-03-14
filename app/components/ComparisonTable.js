@@ -37,7 +37,7 @@ export default function ComparisonTable({ pageA, pageB, investment = 1000 }) {
               <th className="text-right text-xs text-muted font-display font-medium py-3 px-2 hidden sm:table-cell">
                 Return
               </th>
-              <th className="text-right text-xs font-display font-medium py-3 px-2" style={{ color: '#a855f7' }}>
+              <th className="text-right text-xs text-white font-display font-medium py-3 px-2">
                 {pageB.company_name}
               </th>
               <th className="text-right text-xs text-muted font-display font-medium py-3 px-2 hidden sm:table-cell">

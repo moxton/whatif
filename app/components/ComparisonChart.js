@@ -108,10 +108,10 @@ export default function ComparisonChart({ pageA, pageB, investment = 1000 }) {
             <Line
               type="monotone"
               dataKey={pageB.company_name}
-              stroke="#a855f7"
+              stroke="#60a5fa"
               strokeWidth={2.5}
               dot={false}
-              activeDot={{ r: 4, strokeWidth: 0, fill: '#a855f7' }}
+              activeDot={{ r: 4, strokeWidth: 0, fill: '#60a5fa' }}
             />
             <Line
               type="monotone"

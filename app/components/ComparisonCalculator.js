@@ -95,14 +95,13 @@ export default function ComparisonCalculator({ pageA, pageB, slug }) {
             <p className="text-xs text-muted uppercase tracking-wider mb-1 font-display font-medium flex items-center gap-2">
               {pageB.company_name}
               {!winnerIsA && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-compare/10 text-compare uppercase tracking-wider">Winner</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-gain/10 text-gain uppercase tracking-wider">Winner</span>
               )}
             </p>
             <span
               className={`font-mono font-bold tracking-tight ${
-                !winnerIsA ? 'text-3xl sm:text-4xl text-compare' : 'text-2xl sm:text-3xl text-compare'
+                !winnerIsA ? 'text-3xl sm:text-4xl text-gain hero-glow' : 'text-2xl sm:text-3xl text-gain'
               }`}
-              style={{ color: '#a855f7' }}
             >
               {formatValue(valueB)}
             </span>
