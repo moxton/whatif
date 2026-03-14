@@ -1,10 +1,11 @@
-import { getHomepageCompanies, getTopPerformers, makeSlug } from './lib/data';
+import { getHomepageCompanies, getTopPerformers, getPopularComparisons, makeSlug, formatPercent } from './lib/data';
 import HomepageHero from './components/HomepageHero';
 import Sparkline from './components/Sparkline';
 
 export default function Home() {
   const featured = getHomepageCompanies();
   const topPerformers = getTopPerformers(10);
+  const popularComparisons = getPopularComparisons(6);
 
   function formatValue(val) {
     if (val >= 1000000) return `$${(val / 1000000).toFixed(1)}M`;
@@ -105,6 +106,52 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      {/* Popular comparisons */}
+      {popularComparisons.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 border-t border-white/5">
+          <div className="mb-6">
+            <h2 className="font-display text-2xl font-bold text-white">
+              Head-to-head comparisons
+            </h2>
+            <p className="text-sm text-muted mt-1">
+              Side-by-side investment returns with interactive charts
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {popularComparisons.map((c) => {
+              const winnerIsA = c.pageA.current_value >= c.pageB.current_value;
+              return (
+                <a
+                  key={c.slug}
+                  href={`/compare/${c.slug}/`}
+                  className="bg-surface-800 border border-white/5 rounded-xl p-5 card-hover block group"
+                >
+                  <p className="text-xs text-muted mb-2">Since {c.year}</p>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className={`font-display font-semibold text-sm ${winnerIsA ? 'text-gain' : 'text-white'} group-hover:text-gain transition-colors`}>
+                      {c.pageA.company_name}
+                    </span>
+                    <span className="text-xs text-muted">vs</span>
+                    <span className={`font-display font-semibold text-sm ${!winnerIsA ? 'text-gain' : 'text-white'} group-hover:text-gain transition-colors`}>
+                      {c.pageB.company_name}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className={`text-xs font-mono font-medium px-2 py-0.5 rounded ${c.pageA.total_return_pct >= 0 ? 'bg-gain/10 text-gain' : 'bg-loss/10 text-loss'}`}>
+                      {c.pageA.total_return_pct >= 0 ? '+' : ''}{formatReturn(c.pageA.total_return_pct)}
+                    </span>
+                    <span className={`text-xs font-mono font-medium px-2 py-0.5 rounded ${c.pageB.total_return_pct >= 0 ? 'bg-gain/10 text-gain' : 'bg-loss/10 text-loss'}`}>
+                      {c.pageB.total_return_pct >= 0 ? '+' : ''}{formatReturn(c.pageB.total_return_pct)}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* All companies grid */}
       <section id="companies" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 border-t border-white/5">

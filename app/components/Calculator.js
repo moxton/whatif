@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import ShareButtons from './ShareButtons';
 
-export default function Calculator({ pageData }) {
+export default function Calculator({ pageData, shareUrl }) {
   const [investment, setInvestment] = useState(pageData.default_investment);
 
   const multiplier = pageData.current_price / pageData.start_price;
@@ -26,6 +27,39 @@ export default function Calculator({ pageData }) {
 
   return (
     <div className="bg-surface-800 rounded-2xl border border-white/5 overflow-hidden">
+      {/* Investment amount selector */}
+      <div className="px-6 sm:px-10 py-5 border-b border-white/5 bg-surface-900/50">
+        <label className="block text-xs text-muted uppercase tracking-wider mb-3 font-display font-medium">
+          Investment amount
+        </label>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {presets.map((amount) => (
+            <button
+              key={amount}
+              onClick={() => setInvestment(amount)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-mono transition-all ${
+                investment === amount
+                  ? 'bg-gain text-surface-900'
+                  : 'bg-surface-700 text-muted-light hover:bg-surface-600 hover:text-white'
+              }`}
+            >
+              ${amount.toLocaleString('en-US')}
+            </button>
+          ))}
+        </div>
+        <div className="relative">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted font-mono">$</span>
+          <input
+            type="number"
+            value={investment}
+            onChange={(e) => setInvestment(Math.max(1, Number(e.target.value) || 0))}
+            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-2.5 pl-7 text-white font-mono focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors"
+            min="1"
+            step="100"
+          />
+        </div>
+      </div>
+
       {/* Hero result */}
       <div className="px-6 sm:px-10 pt-8 sm:pt-12 pb-6">
         <p className="text-muted-light text-sm mb-2 font-body">
@@ -74,39 +108,13 @@ export default function Calculator({ pageData }) {
             </p>
           </div>
         )}
-      </div>
 
-      {/* Investment amount selector */}
-      <div className="px-6 sm:px-10 py-5 border-t border-white/5 bg-surface-900/50">
-        <label className="block text-xs text-muted uppercase tracking-wider mb-3 font-display font-medium">
-          Change investment amount
-        </label>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {presets.map((amount) => (
-            <button
-              key={amount}
-              onClick={() => setInvestment(amount)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-mono transition-all ${
-                investment === amount
-                  ? 'bg-gain text-surface-900'
-                  : 'bg-surface-700 text-muted-light hover:bg-surface-600 hover:text-white'
-              }`}
-            >
-              ${amount.toLocaleString('en-US')}
-            </button>
-          ))}
-        </div>
-        <div className="relative">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted font-mono">$</span>
-          <input
-            type="number"
-            value={investment}
-            onChange={(e) => setInvestment(Math.max(1, Number(e.target.value) || 0))}
-            className="w-full bg-surface-700 border border-white/10 rounded-lg px-3 py-2.5 pl-7 text-white font-mono focus:outline-none focus:border-gain focus:ring-1 focus:ring-gain/50 transition-colors"
-            min="1"
-            step="100"
+        {shareUrl && (
+          <ShareButtons
+            url={shareUrl}
+            text={`$${investment.toLocaleString('en-US')} invested in ${pageData.company_name} in ${pageData.start_year} would be worth ${formatValue(currentValue)} today (${isPositive ? '+' : ''}${totalReturn.toFixed(1)}%)`}
           />
-        </div>
+        )}
       </div>
     </div>
   );

@@ -136,3 +136,163 @@ export function formatPercent(value) {
   }
   return `${value.toFixed(1)}%`;
 }
+
+// ── Comparison Pages ─────────────────────────────────────────────────────
+
+/**
+ * Pre-defined matchups for comparison pages.
+ * Alphabetical by ticker within each pair.
+ */
+const MATCHUPS = [
+  ['AAPL', 'AMZN'],
+  ['AAPL', 'GOOGL'],
+  ['AAPL', 'MSFT'],
+  ['AAPL', 'TSLA'],
+  ['AMD', 'NVDA'],
+  ['AMZN', 'GOOGL'],
+  ['AMZN', 'SHOP'],
+  ['BRK-B', 'SPY'],
+  ['BTC-USD', 'ETH-USD'],
+  ['BTC-USD', 'NVDA'],
+  ['BTC-USD', 'SPY'],
+  ['CMG', 'MCD'],
+  ['CRWD', 'PLTR'],
+  ['DIS', 'NFLX'],
+  ['GOOGL', 'META'],
+  ['GOOGL', 'MSFT'],
+  ['HD', 'WMT'],
+  ['JPM', 'V'],
+  ['KO', 'PG'],
+  ['LULU', 'NKE'],
+  ['MA', 'V'],
+  ['MNST', 'DPZ'],
+  ['NVDA', 'TSLA'],
+  ['QQQ', 'SPY'],
+];
+
+let _comparisonsCache = null;
+
+function cleanName(name) {
+  return name
+    .toLowerCase()
+    .replace(/[()]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
+ * Generate comparison page slug.
+ * e.g., "Apple" + "Microsoft" + 2010 => "apple-vs-microsoft-since-2010"
+ */
+export function makeComparisonSlug(nameA, nameB, year) {
+  return `${cleanName(nameA)}-vs-${cleanName(nameB)}-since-${year}`;
+}
+
+/**
+ * Get all comparison page objects.
+ * Returns [{ slug, pageA, pageB, year }]
+ */
+export function getAllComparisons() {
+  if (_comparisonsCache) return _comparisonsCache;
+
+  const index = getCompanyIndex();
+  const pages = getAllPages();
+  const comparisons = [];
+
+  for (const [tickerA, tickerB] of MATCHUPS) {
+    const compA = index.find(c => c.ticker === tickerA);
+    const compB = index.find(c => c.ticker === tickerB);
+    if (!compA || !compB) continue;
+
+    const overlapping = compA.start_years.filter(y => compB.start_years.includes(y));
+
+    for (const year of overlapping) {
+      const pageA = pages.find(p => p.ticker === tickerA && p.start_year === year);
+      const pageB = pages.find(p => p.ticker === tickerB && p.start_year === year);
+      if (!pageA || !pageB) continue;
+
+      comparisons.push({
+        slug: makeComparisonSlug(compA.name, compB.name, year),
+        pageA,
+        pageB,
+        year,
+      });
+    }
+  }
+
+  _comparisonsCache = comparisons;
+  return comparisons;
+}
+
+/**
+ * Get a single comparison by slug.
+ */
+export function getComparisonBySlug(slug) {
+  return getAllComparisons().find(c => c.slug === slug) || null;
+}
+
+/**
+ * Get all comparison slugs for generateStaticParams.
+ */
+export function getAllComparisonSlugs() {
+  return getAllComparisons().map(c => c.slug);
+}
+
+/**
+ * Get comparison partners for a given stock page.
+ * Returns [{ partnerName, partnerTicker, comparisonSlug }]
+ */
+export function getComparisonPartnersForPage(ticker, startYear) {
+  const comparisons = getAllComparisons();
+  const partners = [];
+
+  for (const c of comparisons) {
+    if (c.year !== startYear) continue;
+    if (c.pageA.ticker === ticker) {
+      partners.push({
+        partnerName: c.pageB.company_name,
+        partnerTicker: c.pageB.ticker,
+        comparisonSlug: c.slug,
+      });
+    } else if (c.pageB.ticker === ticker) {
+      partners.push({
+        partnerName: c.pageA.company_name,
+        partnerTicker: c.pageA.ticker,
+        comparisonSlug: c.slug,
+      });
+    }
+  }
+
+  return partners;
+}
+
+/**
+ * Get popular comparisons for homepage. Returns earliest year per pair for max drama.
+ */
+export function getPopularComparisons(limit = 6) {
+  const comparisons = getAllComparisons();
+  const popular = [];
+
+  // Priority matchups for homepage (most searched), as [tickerA, tickerB]
+  const priority = [
+    ['AAPL', 'MSFT'], ['NVDA', 'TSLA'], ['AAPL', 'AMZN'],
+    ['BTC-USD', 'SPY'], ['GOOGL', 'META'], ['AMD', 'NVDA'],
+    ['QQQ', 'SPY'], ['KO', 'PG'], ['AAPL', 'GOOGL'], ['HD', 'WMT'],
+  ];
+
+  for (const [tA, tB] of priority) {
+    if (popular.length >= limit) break;
+
+    const match = comparisons
+      .filter(c =>
+        (c.pageA.ticker === tA && c.pageB.ticker === tB) ||
+        (c.pageA.ticker === tB && c.pageB.ticker === tA)
+      )
+      .sort((a, b) => a.year - b.year)[0];
+
+    if (match) popular.push(match);
+  }
+
+  return popular;
+}

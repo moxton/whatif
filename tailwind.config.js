@@ -28,6 +28,10 @@ module.exports = {
           DEFAULT: '#6366f1',
           dim: '#6366f133',
         },
+        compare: {
+          DEFAULT: '#a855f7',
+          dim: '#a855f733',
+        },
         muted: {
           DEFAULT: '#64748b',
           light: '#94a3b8',

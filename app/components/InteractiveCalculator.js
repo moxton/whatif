@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { calculateInvestment } from '../lib/calculator';
 import GrowthChart from './GrowthChart';
 import YearlyTable from './YearlyTable';
+import ShareButtons from './ShareButtons';
 
 const PRESETS = [100, 500, 1000, 5000, 10000, 50000];
 const POPULAR_TICKERS = ['AAPL', 'TSLA', 'NVDA', 'AMZN', 'BTC-USD', 'GOOGL', 'NFLX', 'META'];
@@ -56,50 +57,6 @@ function RotatingTeaser() {
       <p className={`text-xs font-mono text-gain/70 mt-1 transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}>
         {example.pct}
       </p>
-    </div>
-  );
-}
-
-// ── Share Buttons ──────────────────────────────────────────────────────
-function ShareButtons({ result, investment, selectedMonth, selectedYear }) {
-  const [copied, setCopied] = useState(false);
-
-  const monthStr = `${selectedYear}-${String(selectedMonth).padStart(2, '0')}`;
-  const shareUrl = `https://whatifyouinvested.com/calculator/?t=${result.ticker}&m=${monthStr}&a=${investment}`;
-  const shareText = `$${investment.toLocaleString('en-US')} invested in ${result.company_name} in ${MONTHS[selectedMonth - 1]} ${selectedYear} would be worth ${formatValue(result.current_value)} today (${result.total_return_pct >= 0 ? '+' : ''}${result.total_return_pct.toFixed(1)}%)`;
-
-  function handleCopy() {
-    navigator.clipboard.writeText(shareUrl).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  }
-
-  function handleTwitter() {
-    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(url, '_blank', 'width=550,height=420');
-  }
-
-  return (
-    <div className="flex items-center gap-2 mt-5">
-      <button
-        onClick={handleCopy}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display font-medium bg-surface-700 text-muted-light hover:bg-surface-600 hover:text-white transition-colors border border-white/5"
-      >
-        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-        </svg>
-        {copied ? 'Copied!' : 'Copy link'}
-      </button>
-      <button
-        onClick={handleTwitter}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display font-medium bg-surface-700 text-muted-light hover:bg-surface-600 hover:text-white transition-colors border border-white/5"
-      >
-        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-        Share on X
-      </button>
     </div>
   );
 }
@@ -433,18 +390,6 @@ export default function InteractiveCalculator({ companies }) {
             </div>
           )}
 
-          {/* Date picker - only show when company selected */}
-          {selected && !loading && companyData && (
-            <DatePicker
-              firstMonth={selected.first_month}
-              lastMonth={selected.last_month}
-              selectedMonth={selectedMonth}
-              selectedYear={selectedYear}
-              onMonthChange={handleMonthChange}
-              onYearChange={handleYearChange}
-            />
-          )}
-
           {/* Investment amount - only show when company selected */}
           {selected && !loading && companyData && (
             <div>
@@ -478,6 +423,18 @@ export default function InteractiveCalculator({ companies }) {
                 />
               </div>
             </div>
+          )}
+
+          {/* Date picker - only show when company selected */}
+          {selected && !loading && companyData && (
+            <DatePicker
+              firstMonth={selected.first_month}
+              lastMonth={selected.last_month}
+              selectedMonth={selectedMonth}
+              selectedYear={selectedYear}
+              onMonthChange={handleMonthChange}
+              onYearChange={handleYearChange}
+            />
           )}
         </div>
 
@@ -550,10 +507,8 @@ export default function InteractiveCalculator({ companies }) {
 
             {/* Share buttons */}
             <ShareButtons
-              result={result}
-              investment={investment}
-              selectedMonth={selectedMonth}
-              selectedYear={selectedYear}
+              url={`https://whatifyouinvested.com/calculator/?t=${result.ticker}&m=${selectedYear}-${String(selectedMonth).padStart(2, '0')}&a=${investment}`}
+              text={`$${investment.toLocaleString('en-US')} invested in ${result.company_name} in ${MONTHS[selectedMonth - 1]} ${selectedYear} would be worth ${formatValue(result.current_value)} today (${result.total_return_pct >= 0 ? '+' : ''}${result.total_return_pct.toFixed(1)}%)`}
             />
           </div>
         )}

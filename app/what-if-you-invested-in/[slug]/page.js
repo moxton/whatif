@@ -1,9 +1,10 @@
-import { getAllPages, getAllSlugs, getPageBySlug, getPagesByCompany, getPagesBySector, makeSlug } from '../../lib/data';
+import { getAllPages, getAllSlugs, getPageBySlug, getPagesByCompany, getPagesBySector, getComparisonPartnersForPage, makeSlug } from '../../lib/data';
 import Calculator from '../../components/Calculator';
 import GrowthChart from '../../components/GrowthChart';
 import YearlyTable from '../../components/YearlyTable';
 import RelatedLinks from '../../components/RelatedLinks';
 import FAQSchema from '../../components/FAQSchema';
+import CompareButton from '../../components/CompareButton';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -45,20 +46,24 @@ export default function CompanyPage({ params }) {
 
   const companyPages = getPagesByCompany(pageData.ticker);
   const sectorPages = getPagesBySector(pageData.sector);
+  const comparisonPartners = getComparisonPartnersForPage(pageData.ticker, pageData.start_year);
 
   return (
     <>
       <FAQSchema pageData={pageData} />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Breadcrumb */}
-        <nav className="text-xs text-muted mb-6 flex items-center gap-1.5">
-          <a href="/" className="hover:text-white transition-colors">Home</a>
-          <span>/</span>
-          <span className="text-muted-light">{pageData.company_name}</span>
-          <span>/</span>
-          <span className="text-muted-light">Since {pageData.start_year}</span>
-        </nav>
+        {/* Breadcrumb + Compare */}
+        <div className="flex items-center justify-between mb-6">
+          <nav className="text-xs text-muted flex items-center gap-1.5">
+            <a href="/" className="hover:text-white transition-colors">Home</a>
+            <span>/</span>
+            <span className="text-muted-light">{pageData.company_name}</span>
+            <span>/</span>
+            <span className="text-muted-light">Since {pageData.start_year}</span>
+          </nav>
+          <CompareButton partners={comparisonPartners} />
+        </div>
 
         {/* Page heading */}
         <h1 className="font-display text-2xl sm:text-3xl font-bold text-white mb-2 leading-tight">
@@ -72,7 +77,10 @@ export default function CompanyPage({ params }) {
         {/* Main content */}
         <div className="space-y-6">
           {/* Calculator hero */}
-          <Calculator pageData={pageData} />
+          <Calculator
+            pageData={pageData}
+            shareUrl={`https://whatifyouinvested.com/what-if-you-invested-in/${makeSlug(pageData.company_name, pageData.start_year)}/`}
+          />
 
           {/* Calculator CTA */}
           <div className="bg-surface-800 rounded-2xl border border-white/5 p-5 flex flex-col sm:flex-row items-center gap-4 sm:justify-between">
